@@ -1,150 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>나만의 중고마켓</title>
-    <link
-      rel="stylesheet"
-      href="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layermind</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <style>
-      /* 꾸미기 */
-      .hero {
-        background-color: #343a40; /* 어두운 배경색 */
-        color: white; /* 글씨색 흰색 */
-        padding: 50px 0; /* 상하 패딩 */
-        margin-bottom: 30px; /* 아래쪽 여백 추가 */
-      }
-      .card {
-        transition: transform 0.3s ease-in-out; /* 부드러운 크기 변환 효과 */
-      }
-      .card:hover {
-        transform: scale(1.05); /* 마우스 오버 시 카드 확대 */
-      }
+        body {
+            /* 배경 이미지 설정 */
+            background-image: url('main_image.jpg');
+            background-size: cover; /* 이미지가 화면을 꽉 채우도록 */
+            background-position: center; /* 이미지를 화면 중앙에 위치 */
+            background-attachment: fixed; /* 스크롤 시 이미지 고정 */
+            color: white; /* 텍스트 색상을 흰색으로 설정 */
+        }
+        #content {
+            min-height: 100vh; /* 최소 높이를 화면 높이와 동일하게 설정 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 세로 방향에서 중앙 정렬 */
+            align-items: center; /* 가로 방향에서 중앙 정렬 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+        }
+        .nav-link, .btn-link {
+            color: white; /* 네비게이션 링크 및 버튼 링크 색상을 흰색으로 설정 */
+            text-decoration: none; /* 밑줄 없앰 */
+        }
+        .navbar-dark .navbar-toggler {
+            border-color: rgba(255,255,255,0.1); /* 토글 버튼의 테두리 색상 변경 */
+        }
+        .btn {
+            background: none;
+            border: 2px solid white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .finance-text {
+            font-size: 25pt; /* 'Finance, innovated with AI' 텍스트의 폰트 크기를 20포인트로 설정 */
+        }
+        .mission-image {
+            width: 100%; /* 이미지 너비 설정 */
+            max-width: 2000px; /*600px;*/ /* 최대 너비 설정 */
+            height: auto;/*auto; *//* 높이 자동 조정 */
+            margin-top: 200px;/*20px;*/ /* 이미지와 텍스트 사이의 마진 */
+        }
     </style>
-  </head>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#" onclick="showContent('Home')">Layermind</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="showContent('Home')">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="showContent('WhoWeare')">Who We are</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="showContent('AIPM')">AIPM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="showContent('Careers')">Careers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="showContent('Contact')">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-  <body>
-    <div class="hero bg-dark text-center py-5">
-        <h1 class="text-white">나만의 르탄마켓</h1>
-        <h2 class="text-white">집에 있는 물건을 팝니다!</h2>
+    <div id="content">
+        <!-- Default content will load here -->
     </div>
-    <div class="container mt-5">
-      <div class="row">
-        <!-- 냄비 카드 -->
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem">
-            <img
-              src="https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG90fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-              class="card-img-top"
-              alt="냄비 이미지"
-            />
-            <div class="card-body">
-              <h5 class="card-title">냄비</h5>
-              <h6 class="card-subtitle mb-2 text-muted">5만원</h6>
-              <p class="card-text">
-                한 번 밖에 안 쓴 냄비 팝니다. 부모님이 독립할 때 주신 거에요!
-              </p>
-              <a
-                href="https://spartacodingclub.kr/"
-                class="btn btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                상세 정보 보기
-              </a>
-            </div>
-          </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>Copyright © 2021 Layermind</p>
         </div>
-        <!-- 전기밥솥 카드 -->
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem">
-            <img
-              src="https://images.unsplash.com/photo-1544233726-9f1d2b27be8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUVCJUIwJUE1JUVDJTg2JUE1fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-              class="card-img-top"
-              alt="전기밥솥 이미지"
-            />
-            <div class="card-body">
-              <h5 class="card-title">전기밥솥</h5>
-              <h6 class="card-subtitle mb-2 text-muted">8만원</h6>
-              <p class="card-text">
-                거의 사용하지 않은 전기밥솥 팝니다. 상태 양호합니다.
-              </p>
-              <a
-                href="https://spartacodingclub.kr/"
-                class="btn btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                상세 정보 보기
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- 주전자 카드 -->
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem">
-            <img
-              src="https://images.unsplash.com/photo-1622088934558-b729cf3c8cf8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUVCJUFDJUJDJTIwJUVDJUEzJUJDJUVDJUEwJTg0JUVDJTlFJTkwfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-              class="card-img-top"
-              alt="주전자 이미지"
-            />
-            <div class="card-body">
-              <h5 class="card-title">주전자</h5>
-              <h6 class="card-subtitle mb-2 text-muted">3만원</h6>
-              <p class="card-text">
-                사용감이 있지만 기능에는 문제 없는 주전자 팝니다.
-              </p>
-              <a
-                href="https://spartacodingclub.kr/"
-                class="btn btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                상세 정보 보기
-              </a>
-            </div>
-          </div>
-        </div>
-                <!-- 청소기 카드 -->
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem">
-              <img
-                src="청소기.jpeg"
-                class="card-img-top"
-                alt="청소기"
-              />
-              <div class="card-body">
-                <h5 class="card-title">청소기</h5>
-                <h6 class="card-subtitle mb-2 text-muted">25만원</h6>
-                <p class="card-text">
-                  흡입력이 좋은 청소기!
-                </p>
-                <a
-                  href="https://spartacodingclub.kr/"
-                  class="btn btn-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  상세 정보 보기
-                </a>
-              </div>
-            </div>
-          </div>
-  
-      </div>
-    </div>
-  </body>
+    </footer>
+
+    <script>
+        const pageData = {
+            Home: '<h1>Welcome to Layermind</h1><p class="finance-text">Finance, innovated with AI</p><button class="btn btn-link" onclick="showContent(\'WhoWeare\')">Check out introduction</button>',
+//            WhoWeare: '<h1>Our Mission</h1>',
+            WhoWeare: '<h1>Our Mission</h1><img src="image4.jpg" class="mission-image">',
+            AIPM: '<h2>AIPM</h2><img src="image7.jpg" class="mission-image">',
+            Careers: '<h2>Join Our Team</h2><p>Preparing...</p>',
+            Contact: '<h2>Contact Us</h2><p>Reach out for more information or inquiries.</p>'
+        };
+
+        function showContent(page) {
+            document.getElementById('content').innerHTML = pageData[page];
+        }
+
+        // Initial content load
+        showContent('Home');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
